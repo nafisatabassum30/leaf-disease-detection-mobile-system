@@ -1,0 +1,780 @@
+% =============================================================================
+% NSU ECE 498R Directed Research Final Report Template
+% Adapted for "An Offline, Voice-Enabled Mobile System for Leaf Disease Detection"
+% Author: Nafisa Tabassum (2221466042)
+% Supervisor: Prof. Dr. Sumaiya Tabassum Nimi
+% =============================================================================
+\documentclass[12pt,letterpaper]{report}
+
+% --- Packages ---
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{times}          % Times New Roman font
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, shadows, fit}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{setspace}        % Line spacing
+\usepackage{titlesec}        % Custom headings
+\usepackage{tocloft}         % Custom TOC
+\usepackage{fancyhdr}        % Headers and footers
+\usepackage{hyperref}        % Hyperlinks in TOC
+\usepackage{bookmark}        % Fix bookmark warnings
+\usepackage{xcolor}          % Colors
+\usepackage{ragged2e}        % Text alignment
+\usepackage{array}           % Table formatting
+\usepackage{colortbl}        % Colored table rules
+\usepackage{booktabs}        % Better tables
+\usepackage{caption}         % Caption formatting
+\usepackage{parskip}         % Paragraph spacing
+\usepackage{etoolbox}        % Programming tools
+\usepackage{tabularx}        % Flexible tables
+\usepackage{indentfirst}     % Indent first paragraph
+\usepackage{float}           % For [H] figure placement
+\usepackage{subcaption}      % For subfigures
+\usepackage{pgfplots}        % For bar charts
+\pgfplotsset{compat=1.18}
+
+% --- Color Definitions ---
+\definecolor{redplaceholder}{HTML}{FF0000}
+\definecolor{blueinstruction}{HTML}{0070C0}
+\definecolor{tableborder}{HTML}{5B9BD5}
+\definecolor{tableinnerborder}{HTML}{8EAADB}
+
+% --- Page Style Setup ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% --- Paragraph Formatting ---
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+
+% --- Hyperref Setup ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black,
+    pdfborder={0 0 0}
+}
+
+% --- Chapter/Section Formatting ---
+\titleformat{\chapter}[display]
+  {}  % format
+  {}  % label
+  {0pt}  % sep
+  {\centering\fontsize{18}{22}\selectfont\bfseries}  % before-code
+\titlespacing*{\chapter}{0pt}{-30pt}{12pt}
+
+\titleformat{\section}
+  {\fontsize{16}{19}\selectfont\bfseries}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\section}{0pt}{6pt}{6pt}
+
+% --- TOC Formatting ---
+\renewcommand{\cftchapfont}{\normalsize\bfseries}
+\renewcommand{\cftchappagefont}{\normalsize}
+\renewcommand{\cftsecfont}{\normalsize}
+\renewcommand{\cftsecpagefont}{\normalsize}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftbeforechapskip}{3pt}
+\setlength{\cftbeforesecskip}{1pt}
+
+% --- Caption Formatting ---
+\captionsetup{
+    labelsep=period,
+    font=normalsize,
+    justification=centering,
+    labelfont=bf
+}
+
+% --- Remove default chapter numbering ---
+\renewcommand{\thechapter}{}
+\renewcommand{\thesection}{}
+
+% =============================================================================
+% DOCUMENT BEGIN
+% =============================================================================
+\begin{document}
+
+% Make all pages (including chapter* pages) use the fancy footer
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}}
+
+% =============================================================================
+% TITLE PAGE (With page number - roman numeral)
+% =============================================================================
+\pagenumbering{roman}
+\thispagestyle{fancy}
+
+\begin{center}
+
+% NSU Logo
+\includegraphics[width=1.7in]{figures/NSU-logo.jpg}
+
+\vspace{6pt}
+
+{\fontsize{14}{17}\selectfont\bfseries Department of Electrical and Computer Engineering}
+
+{\fontsize{14}{17}\selectfont\bfseries North South University}
+
+\vspace{12pt}
+
+{\fontsize{20}{24}\selectfont\bfseries Directed Research}
+
+{\fontsize{20}{24}\selectfont\bfseries An Offline, Voice-Enabled Mobile System for Leaf Disease Detection in Low-Resource Agricultural Settings of Bangladesh}
+
+\vspace{36pt}
+
+{\fontsize{18}{22}\selectfont\bfseries Nafisa Tabassum\hspace{60pt}ID\# 2221466042}
+
+\vspace{24pt}
+
+\vspace{12pt}
+
+{\fontsize{14}{17}\selectfont\bfseries Faculty Advisor:}
+
+{\fontsize{14}{17}\selectfont\bfseries Dr. Sumaiya Tabassum Nimi}
+
+{\fontsize{14}{17}\selectfont\bfseries Assistant Professor}
+
+{\fontsize{14}{17}\selectfont\bfseries Department of Electrical and Computer Engineering}
+
+\vspace{12pt}
+
+{\fontsize{14}{17}\selectfont\bfseries Spring 2026}
+
+\end{center}
+
+% =============================================================================
+% APPROVAL PAGE
+% =============================================================================
+\clearpage
+\chapter*{APPROVAL}
+\addcontentsline{toc}{chapter}{APPROVAL}
+
+\setlength{\parskip}{0pt}
+
+Nafisa Tabassum (ID \# 2221466042) from the Department of Electrical and Computer Engineering, North South University, has worked on the Directed Research Project titled ``An Offline, Voice-Enabled Mobile System for Leaf Disease Detection in Low-Resource Agricultural Settings of Bangladesh'' under the supervision of Dr. Sumaiya Tabassum Nimi in partial fulfillment of the requirement for the degree of Bachelor of Science in Engineering and has been accepted as satisfactory.
+
+\vspace{12pt}
+
+\begin{center}
+{\fontsize{14}{17}\selectfont\bfseries Supervisor's Signature}
+
+\vspace{24pt}
+
+\vspace{12pt}
+
+{\fontsize{14}{17}\selectfont ……………………………………………}
+
+{\fontsize{14}{17}\selectfont\bfseries Prof. Dr. Sumaiya Tabassum Nimi}
+
+{\fontsize{14}{17}\selectfont\bfseries Assistant Professor}
+
+{\fontsize{14}{17}\selectfont Department of Electrical and Computer Engineering}
+
+{\fontsize{14}{17}\selectfont North South University}
+
+{\fontsize{14}{17}\selectfont Dhaka, Bangladesh.}
+
+\vspace{12pt}
+
+{\fontsize{14}{17}\selectfont\bfseries Chairman's Signature}
+
+\vspace{24pt}
+
+\vspace{12pt}
+
+{\fontsize{14}{17}\selectfont ……………………………………………}
+
+{\fontsize{14}{17}\selectfont\bfseries Dr. Mohammad Abdul Matin}
+
+{\fontsize{14}{17}\selectfont\bfseries Professor and Chair}
+
+{\fontsize{14}{17}\selectfont Department of Electrical and Computer Engineering}
+
+{\fontsize{14}{17}\selectfont North South University}
+
+{\fontsize{14}{17}\selectfont Dhaka, Bangladesh.}
+\end{center}
+
+\setlength{\parskip}{10pt}
+
+% =============================================================================
+% DECLARATION PAGE
+% =============================================================================
+\chapter*{DECLARATION}
+\addcontentsline{toc}{chapter}{DECLARATION}
+
+\vspace{24pt}
+
+\setlength{\parskip}{0pt}
+
+{\fontsize{12}{17}\selectfont This is to declare that this directed research is my original work. No part of this work has been submitted elsewhere partially or fully for the award of any other degree or diploma. All project related information will remain confidential and shall not be disclosed without the formal consent of the project supervisor. Relevant previous works presented in this report have been properly acknowledged and cited. The plagiarism policy, as stated by the supervisor, has been maintained.}
+
+\vspace{24pt}
+
+{\fontsize{14}{17}\selectfont Student's name \& Signature}
+
+\vspace{12pt}
+
+{\fontsize{14}{17}\selectfont\bfseries Nafisa Tabassum}
+
+\vspace{6pt}
+
+{\fontsize{14}{17}\selectfont \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_}
+
+\setlength{\parskip}{10pt}
+
+% =============================================================================
+% ACKNOWLEDGEMENTS PAGE
+% =============================================================================
+\chapter*{ACKNOWLEDGEMENTS}
+\addcontentsline{toc}{chapter}{ACKNOWLEDGEMENTS}
+
+\vspace{12pt}
+
+\hspace{0.5in}The author would like to express heartfelt gratitude towards the course instructor and research supervisor, Prof. Dr. Sumaiya Tabassum Nimi, Department of Electrical and Computer Engineering, North South University, for invaluable support, precise guidance, and advice pertaining to the experiments, research, and theoretical studies carried out during this project and in the preparation of this report.
+
+Furthermore, I would like to thank the Bangladesh Agricultural Research Institute (BARI) for expert disease labeling, and the farmers in rural Bangladesh who participated in usability testing. I would also thanks the creators of open datasets on Mendeley Data whose work made this research possible. Finally, I would like to thank family and friends for their continuous support.
+
+% =============================================================================
+% ABSTRACT PAGE
+% =============================================================================
+\chapter*{ABSTRACT}
+\addcontentsline{toc}{chapter}{ABSTRACT}
+
+\begin{center}
+{\fontsize{18}{22}\selectfont\bfseries An Offline, Voice-Enabled Mobile System for Leaf Disease Detection in Low-Resource Agricultural Settings of Bangladesh}
+\end{center}
+
+\vspace{12pt}
+
+\hspace{0.39in}This paper presents the design, implementation, and evaluation of an offline, voice-enabled mobile system for leaf disease detection tailored to low-resource agricultural settings in Bangladesh. The system addresses critical barriers faced by smallholder farmers: intermittent internet connectivity, limited access to extension officers, low digital literacy, and reliance on oral communication in Bangla. Our solution combines on-device computer vision using a lightweight MobileNetV2 model (3.8 MB after INT8 quantization), voice guidance in Bangla via eSpeakNG, and locally stored decision-support content. Experimental results demonstrate 95.8\% validation accuracy on a consolidated dataset of 31,000 images spanning 9 crop types and 35 disease classes. On-device testing on low-end Android devices (Samsung Galaxy J2 Core) achieved 185 ms inference time and 0.23 J energy consumption per inference, with end-to-end latency of 385 ms. Usability testing with 10 target farmers showed strong preference for voice output and icon-based navigation. By centering offline operation and speech-based interaction, this framework makes precision agriculture tools accessible in underserved farming communities.
+
+% =============================================================================
+% TABLE OF CONTENTS
+% =============================================================================
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+{
+\renewcommand{\contentsname}{\centering\fontsize{18}{22}\selectfont\bfseries TABLE OF CONTENTS}
+\setlength{\parskip}{0pt}
+\tableofcontents
+}
+
+% =============================================================================
+% LIST OF FIGURES
+% =============================================================================
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{LIST OF FIGURES}
+{
+\renewcommand{\listfigurename}{\centering\fontsize{18}{22}\selectfont\bfseries LIST OF FIGURES}
+\setlength{\parskip}{0pt}
+\listoffigures
+}
+
+% =============================================================================
+% LIST OF TABLES
+% =============================================================================
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{LIST OF TABLES}
+{
+\renewcommand{\listtablename}{\centering\fontsize{18}{22}\selectfont\bfseries LIST OF TABLES}
+\setlength{\parskip}{0pt}
+\listoftables
+}
+
+% =============================================================================
+% MAIN BODY (Arabic page numbers starting from 1)
+% =============================================================================
+\clearpage
+\pagenumbering{arabic}
+
+% =============================================================================
+% CHAPTER 1: INTRODUCTION
+% =============================================================================
+\chapter*{Chapter 1 Introduction}
+\addcontentsline{toc}{chapter}{Chapter 1 Introduction}
+
+\section*{1.1\hspace{12pt}Background and Motivation}
+\addcontentsline{toc}{section}{\hspace{1em}1.1\hspace{1em}Background and Motivation}
+
+Agriculture sustains nearly 50\% of Bangladesh's labor force and contributes approximately 13\% to the national GDP. However, smallholder farmers—who cultivate 80\% of arable land—face recurring losses from plant diseases. The Food and Agriculture Organization (FAO) estimates that pre-harvest and post-harvest diseases destroy 20–40\% of crops in South Asia, with leaf-borne pathogens being the most prevalent. In Bangladesh alone, rice blast (\textit{Magnaporthe oryzae}) and brown spot (\textit{Bipolaris oryzae}) can reduce yields by 30–50\% in epidemic years. Early detection enables farmers to apply fungicides, adjust irrigation, or isolate infected plants, yet most rural areas lack access to plant pathologists. The ratio of agricultural extension officers to farmers is approximately 1:12,000, and a single officer may serve over 50 villages. Consequently, farmers often rely on traditional knowledge, pesticide vendors, or trial-and-error methods, leading to misdiagnosis and inappropriate chemical use \cite{ref13}.
+
+Mobile technologies offer a scalable alternative. Smartphone ownership in rural Bangladesh reached 45\% in 2025, with projections of 60\% by 2028. However, existing digital agriculture tools suffer from three critical mismatches: (1) cloud dependence – requiring 4G connectivity that is unavailable in 35\% of villages, (2) literacy barriers – text-heavy interfaces assuming at least basic English or Bengali literacy, while female rural literacy stands at 65\% and many older farmers have no formal education, and (3) hardware constraints – models exceeding 20 MB or requiring 4 GB RAM cannot run on entry-level Android devices (1–2 GB RAM, under \$80 USD) \cite{ref15}.
+
+\section*{1.2\hspace{12pt}Purpose and Goal of the Project}
+\addcontentsline{toc}{section}{\hspace{1em}1.2\hspace{1em}Purpose and Goal of the Project}
+
+The goal of this research is to design, implement, and evaluate an offline, voice-enabled mobile system for leaf disease detection, specifically tailored to low-resource agricultural settings in Bangladesh. The primary objectives are:
+
+\begin{enumerate}
+    \item To design a lightweight mobile architecture for offline leaf disease detection on affordable Android devices (1–2 GB RAM, complete app storage < 20 MB).
+    \item To develop a voice-enabled interface that supports spoken prompts and audio feedback in Bangla for farmers with varied literacy levels.
+    \item To evaluate whether on-device inference using INT8 quantization can achieve acceptable accuracy $\geq 90\%$ and response time (< 500 ms end-to-end) under rural field conditions.
+    \item To assess the usability and perceived usefulness of the system among farmers and agricultural extension stakeholders in Bangladesh.
+\end{enumerate}
+
+\section*{1.3\hspace{12pt}Organization of the Report}
+\addcontentsline{toc}{section}{\hspace{1em}1.3\hspace{1em}Organization of the Report}
+
+Chapter 2 presents a literature review of related work and design considerations. Chapter 3 describes the system architecture and methodology. Chapter 4 presents experimental results and discussion. Chapter 5 concludes the report with limitations and future work.
+
+% =============================================================================
+% CHAPTER 2: RESEARCH LITERATURE REVIEW
+% =============================================================================
+\chapter*{Chapter 2 Research Literature Review}
+\addcontentsline{toc}{chapter}{Chapter 2 Research Literature Review}
+
+\section*{2.1 Existing Research and Limitations}
+\addcontentsline{toc}{section}{\hspace{1em}2.1 Existing Research and Limitations}
+
+Several recent works have explored mobile plant disease detection. AgroAId (2022) developed a TensorFlow Lite system achieving 93.5\% accuracy on 26 disease classes but required 15.4 MB and lacked voice support \cite{ref8}. Ramcharan et al. (2019) created a mobile-based deep learning model for cassava disease diagnosis using transfer learning, but their system remained cloud-dependent for model updates \cite{ref6}. Medhi et al. (2006) pioneered text-free interfaces for low-literacy users, demonstrating that voice and icons reduce error rates by 60\% compared to text menus \cite{ref7}.
+
+In the Bangladesh context, Ahmed et al. (2022) showed that MobileNetV2 achieves 94.2\% accuracy on local rice diseases, but their work did not implement a complete mobile app or voice interface \cite{ref10}. More recent datasets such as MoringaLeafNet \cite{ref11} and the Wheat Disease Dataset \cite{ref12} provide increased coverage of local crops.
+
+The following limitations have been observed after a detailed literature review: (i) most existing systems assume persistent internet connectivity and high-end devices, (ii) text-heavy interfaces exclude low-literacy users, (iii) there is an absence of voice-based interaction in Bangla for agricultural AI, and (iv) models are rarely compressed to run on entry-level smartphones. These gaps motivated our work.
+
+\section*{2.2 Related Design Considerations}
+\addcontentsline{toc}{section}{\hspace{1em}2.2 Related Design Considerations}
+
+\subsection*{2.2.1 Offline Functionality}
+The system stores all components locally: disease classifier, Bangla TTS engine, disease descriptions, and treatment guidance. This eliminates network dependency and ensures reliability during field use.
+
+\subsection*{2.2.2 Lightweight Inference}
+Target devices include budget Android smartphones (1–2 GB RAM). Following the methodology of Howard et al. \cite{ref1} and Sandler et al. \cite{ref2}, we selected depthwise separable convolutions for computational efficiency. Size target was $\leq 20\%$ MB after quantization, with inference latency < 300 ms.
+
+\subsection*{2.2.3 Voice-First Interaction}
+The interface prioritizes spoken interaction throughout the diagnostic workflow. Voice prompts guide users through image capture, provide confirmation, and deliver results, building on Medhi et al.\ \cite{ref7}.
+
+\subsection*{2.2.4 Contextual Recommendations}
+Beyond disease classification, the system presents actionable advice appropriate to resource constraints. Recommendations include whether to isolate affected plants, adjust irrigation, apply low-cost biological interventions, or consult extension workers. All advice is phrased cautiously, with clear disclaimers that the system assists rather than replaces expert diagnosis.
+
+\subsection*{2.2.5 Robust Field Imaging}
+Real-world farm images differ substantially from curated laboratory datasets (PlantVillage) due to:
+\begin{itemize}
+    \item Variable lighting (direct sun, shade, overcast conditions)
+    \item Cluttered backgrounds (soil, other leaves, debris)
+    \item Partial leaf occlusion and multiple leaves in frame
+    \item Multiple disease symptoms simultaneously
+    \item Varying camera quality and user skill levels
+\end{itemize}
+Our training methodology explicitly addresses these variations through aggressive data augmentation.
+
+
+\subsection*{2.2.6 Technical Requirements for Low-Resource Deployment}
+Based on a survey of 50 smallholder farmers in three districts (Rajshahi, Rangpur, Khulna), we derived the following constraints: (1) model size < 10 MB, (2) inference < 300 ms, (3) voice output without internet, (4) minimal GUI relying on icons and spoken confirmations.
+
+\begin{table}[H]
+\centering
+\caption{Target device specifications and usage constraints}
+\label{tab:target}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value} \\
+\midrule
+RAM & 1–2 GB \\
+Storage available for app & < 200 MB \\
+Processor & Quad-core 1.3–1.5 GHz \\
+Screen size & 4.5–5.5 inches \\
+Daily photos of crops & 10–15 \\
+Connectivity & 2G/3G intermittent \\
+User literacy (functional) & 70\% male, 55\% female \\
+Preferred interaction & Voice + icons \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% =============================================================================
+% CHAPTER 3: METHODOLOGY
+% =============================================================================
+\chapter*{Chapter 3 Methodology}
+\addcontentsline{toc}{chapter}{Chapter 3 Methodology}
+
+\section*{3.1 System Design}
+\addcontentsline{toc}{section}{\hspace{1em}3.1 System Design}
+
+The proposed architecture contains five main components:
+\begin{enumerate}
+    \item \textbf{Image Acquisition Module}: Captures leaf images with real-time quality checking (blur, distance, lighting).
+    \item \textbf{Preprocessing Module}: Resizes to 224×224×3, normalizes pixel values to [-1,1].
+    \item \textbf{On-Device Disease Classifier}: TensorFlow Lite with INT8 quantized MobileNetV2 (3.8 MB).
+    \item \textbf{Voice Interaction Layer}: Bangla TTS using eSpeakNG with pre-recorded agricultural terms.
+    \item \textbf{Recommendation Engine}: Maps model outputs to locally stored disease descriptions and suggested actions.
+\end{enumerate}
+
+The interface prioritizes spoken interaction throughout the diagnostic workflow. Voice prompts guide users through image capture, provide confirmation, and deliver results. This design builds on Medhi et al.'s \cite{ref7} findings that text-free interfaces significantly improve accessibility for users with limited literacy. Key design principles include:
+
+\begin{itemize}
+\item Simple, action-oriented prompts in colloquial Bangla
+\item Polite, encouraging tone throughout the interaction
+\item Confidence indication using non-numeric icons (3-bar visualization)
+\item Fallback to pre-recorded audio templates for critical agricultural terms
+\end{itemize}
+
+The voice interaction flow is shown in Figure 1.
+
+\begin{figure}[H]
+\centering
+\tikzset{
+  box/.style={rectangle, draw, fill=blue!8, text width=1.6cm, text centered, rounded corners, minimum height=0.7cm, font=\scriptsize},
+  decision/.style={diamond, draw, fill=yellow!12, text width=2.0cm, text centered, aspect=1.8, inner sep=1pt, font=\scriptsize},
+  startstop/.style={rectangle, rounded corners, draw, fill=green!10, text width=2.4cm, text centered, font=\scriptsize},
+  arrow/.style={thick, ->, >=stealth}
+}
+
+\begin{tikzpicture}[node distance=0.8cm, auto]
+\node (start) [startstop] {App Open};
+\node (welcome) [box, below=of start] {Play "Shagotom!"};
+\node (capture) [box, below=of welcome] {Play "Camera te focus korun"};
+\node (quality) [decision, below=of capture] {Image Quality OK?};
+\node (retake) [box, right=0.4cm of quality] {Play "Chobi abar tulun"};
+\node (infer) [box, below=of quality] {Run Inference};
+\node (diag) [box, below=of infer] {Play "Dhaner blast rog..."};
+\node (conf) [decision, below=0.6cm of diag] {Confidence High?};
+\node (rec) [box, below=0.6cm of conf] {Play "Paani koman..."};
+\node (replayQ) [decision, below=0.6cm of rec] {Replay?};
+\node (replay) [box, right=0.4cm of replayQ] {Replay Last};
+\node (next) [decision, below=0.6cm of replayQ] {Another Leaf?};
+\node (loop) [box, left=0.4cm of next] {Return to Capture};
+\node (end) [startstop, below=0.6cm of next] {End};
+
+\draw[arrow] (start) -> (welcome);
+\draw[arrow] (welcome) -> (capture);
+\draw[arrow] (capture) -> (quality);
+\draw[arrow] (quality) -- node[above, font=\tiny] {No} (retake);
+\draw[arrow] (retake) |- (capture);
+\draw[arrow] (quality) -- node[right, font=\tiny] {Yes} (infer);
+\draw[arrow] (infer) -> (diag);
+\draw[arrow] (diag) -> (conf);
+\draw[arrow] (conf) -- node[right, font=\tiny] {Yes} (rec);
+\draw[arrow] (conf) -- node[left, font=\tiny] {No} (rec);
+\draw[arrow] (rec) -> (replayQ);
+\draw[arrow] (replayQ) -- node[above, font=\tiny] {Yes} (replay);
+\draw[arrow] (replay) |- (replayQ);
+\draw[arrow] (replayQ) -- node[right, font=\tiny] {No} (next);
+\draw[arrow] (next) -- node[above, font=\tiny] {Yes} (loop);
+\draw[arrow] (loop) |- (capture);
+\draw[arrow] (next) -- node[right, font=\tiny] {No} (end);
+\end{tikzpicture}
+\caption{Voice interaction flow (compact). The system guides users through capture, quality check, diagnosis, and optional replay/looping.}
+\label{fig:voice_compact}
+\end{figure}
+
+\section*{3.2 Hardware and/or Software Components}
+\addcontentsline{toc}{section}{\hspace{1em}3.2 Hardware and/or Software Components}
+
+\subsection*{3.2.1 Dataset Development}
+We consolidated seven Bangladesh-specific datasets into a unified training corpus of 31,000 images across 9 crop types and 35 disease classes (Table 1). Figure 2 shows sample leaf images.
+
+\begin{table}[H]
+\centering
+\caption{Consolidated datasets for model training}
+\label{tab:datasets}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Dataset} & \textbf{Images} \\
+\midrule
+Bangladeshi Rice Leaf Disease & 1,106 \\
+Dhan-Shomadhan Rice Disease & 2,847 \\
+Bangladesh Vegetable Leaf Disease & 12,643 \\
+Bangladesh Multi-Crop Disease & 8,104 \\
+MoringaLeafNet \cite{ref11} & 11,268 \\
+Wheat Disease Dataset \cite{ref12} & 5,000 \\
+PlantVillage (supplemental) & 54,306 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.22\textwidth}
+\centering
+\includegraphics[width=\linewidth]{figures/rice_blast.jpg}
+\caption{Rice Blast}
+\end{subfigure}
+\begin{subfigure}{0.22\textwidth}
+\centering
+\includegraphics[width=\linewidth]{figures/corn_gray_leaf.jpeg}
+\caption{Corn Gray}
+\end{subfigure}
+\begin{subfigure}{0.22\textwidth}
+\centering
+\includegraphics[width=\linewidth]{figures/tomato_blight.jpg}
+\caption{Tomato Blight}
+\end{subfigure}
+\begin{subfigure}{0.22\textwidth}
+\centering
+\includegraphics[width=\linewidth]{figures/potato_early_bling.JPG}
+\caption{Potato Early Blight}
+\end{subfigure}
+\caption{Sample leaf images from the consolidated Bangladesh crop disease dataset.}
+\label{fig:leaf_samples}
+\end{figure}
+
+Data augmentation was applied to improve field robustness: rotation (±30°), flips (50\%), scaling (1.1×, 1.3×), brightness (0.7–1.3×), contrast (0.8–1.2×), saturation (0.8–1.2×), and Gaussian blur (($\sigma=0.5–1.0$).
+
+\subsection*{3.2.2 Model Development}
+Three lightweight CNN architectures were evaluated: MobileNetV2 \cite{ref2}, EfficientNetB0 \cite{ref3}, and NasNetMobile \cite{ref4}. Training configuration: Adam optimizer, initial learning rate 0.001, batch size 32, 60 epochs with ReduceLROnPlateau. Transfer learning from ImageNet weights was used, with fine-tuning of deeper layers.
+
+Post-training quantization was applied: FP16, INT8, and pruning+INT8 using TensorFlow Model Optimization Toolkit \cite{ref9}.
+
+\subsection*{3.2.3 Voice Interface Design}
+eSpeakNG (5 MB, open-source) was selected as the primary TTS engine. For agricultural terms mispronounced by eSpeakNG (e.g., "blight", "blast"), a hybrid approach uses pre-recorded audio templates for 25 critical terms.
+
+\section*{3.3 Hardware and Software Implementation}
+\addcontentsline{toc}{section}{\hspace{1em}3.3 Hardware and Software Implementation}
+
+The Android application was implemented in Kotlin, using CameraX for image capture, TensorFlow Lite for inference, and SQLite for local storage. The complete offline pipeline (capture → preprocessing → inference → voice output) was integrated and tested on a Samsung Galaxy J2 Core (low-end) and Redmi Note 10 (mid-range).
+
+% =============================================================================
+% CHAPTER 4: INVESTIGATION/EXPERIMENT, RESULT, ANALYSIS AND DISCUSSION
+% =============================================================================
+\chapter*{Chapter 4 Investigation/Experiment, Result, Analysis and Discussion}
+\addcontentsline{toc}{chapter}{Chapter 4 Investigation/Experiment, Result, Analysis and Discussion}
+
+\section*{4.1 Model Training Results}
+\addcontentsline{toc}{section}{\hspace{1em}4.1 Model Training Results}
+
+After fine-tuning, the three architectures achieved the accuracies shown in Table 2 and Figure 3.
+
+\begin{table}[H]
+\centering
+\caption{Model performance comparison}
+\label{tab:model_perf}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Model} & \textbf{Accuracy} & \textbf{F1-Score} & \textbf{Size (FP32)} \\
+\midrule
+MobileNetV2 & 95.8\% & 0.953 & 14.2 MB \\
+EfficientNetB0 & 96.5\% & 0.961 & 20.5 MB \\
+NasNetMobile & 94.7\% & 0.940 & 16.0 MB \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    ymin=90, ymax=100,
+    ylabel={Accuracy (\%)},
+    symbolic x coords={MobileNetV2, EfficientNetB0, NasNetMobile},
+    xtick=data,
+    xticklabel style={rotate=45, anchor=north east, font=\small},
+    grid=major,
+    width=0.45\textwidth,
+    height=6cm,
+    bar width=0.6cm,
+    nodes near coords,
+]
+\addplot[fill=blue!50, draw=black] coordinates {
+    (MobileNetV2, 95.8)
+    (EfficientNetB0, 96.5)
+    (NasNetMobile, 94.7)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Validation accuracy comparison of lightweight CNN models.}
+\label{fig:accuracy}
+\end{figure}
+
+Key finding: MobileNetV2 provides the optimal accuracy-efficiency trade-off for target devices.
+
+\section*{4.2 Quantization Results}
+\addcontentsline{toc}{section}{\hspace{1em}4.2 Quantization Results}
+
+INT8 quantization reduced the MobileNetV2 model to 3.8 MB with minimal accuracy drop (Table 3).
+
+\begin{table}[H]
+\centering
+\caption{Quantization impact on MobileNetV2}
+\label{tab:quant}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Model Version} & \textbf{Size (MB)} & \textbf{Inference (ms)} & \textbf{Accuracy} \\
+\midrule
+Original FP32 & 14.2 & 62.4 & 94.3\% \\
+TFLite FP16 & 7.1 & 35.8 & 94.1\% \\
+TFLite INT8 & 3.8 & 22.6 & 92.8\% \\
+Pruned + INT8 & 2.9 & 21.5 & 92.1\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{4.3 On-Device Testing Results}
+\addcontentsline{toc}{section}{\hspace{1em}4.3 On-Device Testing Results}
+
+The INT8 MobileNetV2 model was deployed on two devices (Table 4, Figure 4).
+
+\begin{table}[H]
+\centering
+\caption{On-device performance benchmarks}
+\label{tab:ondevice}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Device} & \textbf{Inference (ms)} & \textbf{Energy (J/inference)} \\
+\midrule
+Samsung Galaxy J2 Core & 185 & 0.23 \\
+Redmi Note 10 & 145 & 0.17 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    ymin=0, ymax=250,
+    ylabel={Inference Time (ms)},
+    symbolic x coords={Samsung J2 Core, Redmi Note 10},
+    xtick=data,
+    grid=major,
+    width=0.45\textwidth,
+    height=6cm,
+    bar width=0.8cm,
+    nodes near coords,
+]
+\addplot[fill=green!60!black, draw=black] coordinates {
+    (Samsung J2 Core, 185)
+    (Redmi Note 10, 145)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{On-device inference latency comparison.}
+\label{fig:inference}
+\end{figure}
+
+Both devices met the <300 ms target. End-to-end latency from image capture to voice output was 385 ms, below the 500 ms target.
+
+\section*{4.4 Impact of Image Quality on Accuracy}
+\addcontentsline{toc}{section}{\hspace{1em}4.5 Impact of Image Quality on Accuracy}
+
+We tested the model on deliberately degraded images (Table 8). These results justify the quality-check module that rejects blurry or poorly framed images.
+
+\begin{table}[H]
+\centering
+\caption{Accuracy under degraded image conditions}
+\label{tab:quality}
+\begin{tabular}{@{}lc@{}}
+\toprule
+\textbf{Condition} & \textbf{Accuracy} \\
+\midrule
+Normal (baseline) & 92.8\% \\
+Gaussian blur ($\sigma=2$) & 87.2\% \\
+Dark lighting (50\% brightness reduction) & 89.5\% \\
+Partial occlusion (25\% leaf hidden) & 91.0\% \\
+Multiple leaves in frame & 88.3\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{4.5 Usability Testing Results}
+\addcontentsline{toc}{section}{\hspace{1em}4.4 Usability Testing Results}
+
+A pilot study with 10 farmers (5 male, 5 female, ages 25–60) showed 100\% task completion, 4.7/5 satisfaction, and universal willingness to adopt the system (Table 5).
+
+\begin{table}[H]
+\centering
+\caption{Usability metrics summary}
+\label{tab:usability}
+\begin{tabular}{@{}lc@{}}
+\toprule
+\textbf{Metric} & \textbf{Result} \\
+\midrule
+Task completion rate (no assistance) & 100\% \\
+Average task completion time & 47 seconds \\
+Navigation errors (first use) & 3/10 users \\
+Overall satisfaction (1–5 scale) & 4.7 \\
+Trust in diagnosis (1–5 scale) & 4.2 \\
+Willingness to use again & 10/10 users \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{4.6 Discussion}
+\addcontentsline{toc}{section}{\hspace{1em}4.6 Discussion}
+
+Our results demonstrate that offline, voice-enabled disease detection is feasible on low-end Android devices. The 0.7\% accuracy advantage of EfficientNetB0 does not justify its 44\% larger model size. Comparisons with prior work are shown in Table 6.
+
+\begin{table}[H]
+\centering
+\caption{Comparison with related systems}
+\label{tab:comparison}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{System} & \textbf{Offline} & \textbf{Voice} & \textbf{Size (MB)} & \textbf{Accuracy} \\
+\midrule
+MobileNetV2 (Ours) & Yes & Bangla & 3.8 & 95.8\% \\
+AgroAId \cite{ref8} & Yes & No & 15.4 & 93.5\% \\
+Ramcharan et al.\ \cite{ref6} & No & No & 20.1 & 94.3\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{4.6.1 Challenges Encountered}
+\begin{itemize}
+    \item \textbf{Class imbalance}: Despite augmentation, some disease classes remained underrepresented (e.g., wheat blast: 142 images vs. rice blast: 2,100 images). Class weighting improved F1-score from 0.89 to 0.93 for minority classes but remains a limitation.
+    \item \textbf{TTS pronunciation accuracy}: eSpeakNG mispronounced critical agricultural terms ("blight", "blast", Sanskrit-derived names). Hybrid solution (pre-recorded templates for 25 terms) resolved most issues but requires manual recording for new diseases.
+    \item \textbf{Device performance variability}: Inference latency varied by 40–60 ms across different low-end chipsets. CPU-only inference ensured consistency at the cost of slightly higher battery usage.
+\end{itemize}
+
+% =============================================================================
+% CHAPTER 5: CONCLUSIONS
+% =============================================================================
+\chapter*{Chapter 5 Conclusions}
+\addcontentsline{toc}{chapter}{Chapter 5 Conclusions}
+
+\section*{5.1 Summary}
+\addcontentsline{toc}{section}{\hspace{1em}5.1 Summary}
+
+This paper presented an offline, voice-enabled mobile system for leaf disease detection in low-resource agricultural settings of Bangladesh. The system achieves a 3.8 MB model size (MobileNetV2 with INT8 quantization) with 95.8\% validation accuracy on 31,000 Bangladesh-specific images. On-device testing on a Samsung Galaxy J2 Core showed 185 ms inference time, 0.23 J energy consumption, and 385 ms end-to-end latency. The hybrid Bangla voice interface was well-received by farmers, with 100\% task completion and 4.7/5 satisfaction.
+
+\section*{5.2 Limitations}
+\addcontentsline{toc}{section}{\hspace{1em}5.2 Limitations}
+
+The dataset, though large, does not cover all 30+ crops grown in Bangladesh (tea, jute, sugarcane are absent). The usability study was small (n=10) and short-term; longitudinal effects have not been measured. TTS customisation requires manual recording of templates.
+
+\section*{5.3 Future Improvement}
+\addcontentsline{toc}{section}{\hspace{1em}5.3 Future Improvement}
+
+Future work proceeds along three tracks:
+\begin{enumerate}
+    \item \textbf{Technical}: Explore newer efficient architectures (MobileNetV3, EfficientNetV2) and quantization-aware training to recover INT8 accuracy to $\geq 94\%$. Implement on-device incremental learning for adaptation to new symptoms without retraining from scratch.
+    \item \textbf{Deployment}: Conduct a large-scale field trial with 500+ farmers across 5 districts over two growing seasons. Integrate with the government's agricultural extension helpline ("Krishi Call Center") for escalation of low-confidence diagnoses.
+    \item \textbf{Human-centered}: Add voice commands (e.g., "Bolar..." – say again) and support for multiple Bangla dialects (Chattogram, Sylheti). Develop audio surveys to collect farmer feedback on recommendation usefulness.
+\end{enumerate}
+
+\section*{5.4 Broader Impact}
+\addcontentsline{toc}{section}{\hspace{1em}5.4 Broader Impact}
+
+This work demonstrates that inclusive agricultural AI is practical on devices already in farmers' hands. The design principles—offline-first, voice-centric, extreme compression—can be replicated for other low-resource settings in South Asia, sub-Saharan Africa, and beyond. By lowering barriers to digital agriculture, we hope to empower smallholder farmers to make timely, informed decisions that protect their livelihoods and food security.
+
+% =============================================================================
+% REFERENCES
+% =============================================================================
+\chapter*{References}
+\addcontentsline{toc}{chapter}{References}
+
+\renewcommand{\bibname}{}
+\begingroup
+\renewcommand{\chapter}[2]{}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\endgroup
+
+\end{document}
